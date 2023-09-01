@@ -232,6 +232,17 @@ console.log(checkFlags(/pattern/gimsy));
  * Повертає  - Масив методів, які використовуються у регулярному виразі.
  */
 function checkRegexMethods(regex) {
+  const usedMethods = [];
+  if (regex.dotAll) {
+    usedMethods.push("dotAll");
+  }
+  if (regex.multiline) {
+    usedMethods.push("multiline");
+  }
+  if (regex.sticky) {
+    usedMethods.push("sticky");
+  }
+  return usedMethods;
   // Створюємо масив для зберігання використаних методів.
   // Перевіряємо, чи використовується метод `dotAll`.
   // Перевіряємо, чи використовується метод `multiline`.
@@ -255,6 +266,9 @@ console.log(checkRegexMethods(/test/msy));
  * Повертає  - Індекс першого входження слова у рядок або -1, якщо слово не знайдено.
  */
 function findWord(str, word) {
+  const regex = new RegExp(word);
+  const index = str.search(regex);
+  return index;
   // Створення регулярного виразу для пошуку слова.
   // Використання методу `search` для пошуку першого входження слова.
 }
